@@ -1,8 +1,19 @@
 # frozen_string_literal: true
 
-class UsersController < ProtectedController
+class UsersController < OpenReadController
   before_action :set_user, only: %i[update show]
   skip_before_action :authenticate, only: %i[signup signin]
+
+  # GET 'users/:id'
+  def index
+    @users = User.all
+    render json: @users
+  end
+
+  # GET /users/:id
+  def show
+    render json: user
+  end
 
   # POST '/sign-up'
   def signup

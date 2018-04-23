@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show update]
 
   # Custom routes
+  get '/user' => 'users#index'
+  get '/users/:id' => 'users#show'
+  get '/users/:id' => 'users#show'
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'
   delete '/sign-out' => 'users#signout'
