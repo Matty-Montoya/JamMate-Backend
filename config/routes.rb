@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   # RESTful routes
+  resources :instruments, except: %i[new edit]
   resources :examples, except: %i[new edit]
   resources :users, only: %i[index show update]
 
