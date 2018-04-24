@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class InstrumentsController < OpenReadController
-  before_action :set_instrument, only: %i[show update destroy]
+  before_action :set_instrument, only: %i[update destroy]
 
   # GET /instruments
   def index
-    @instruments = Instrument.all
+    @instruments = current_user.instrument.all
 
     render json: @instruments
   end
@@ -17,10 +17,10 @@ class InstrumentsController < OpenReadController
 
   # POST /instruments
   def create
-    @instrument = Instrument.new(instrument_params)
+    @instrument = current_user.instruments.build(instrument_params)
 
     if @instrument.save
-      render json: @instrument, status: :created, location: @instrument
+      render json: @instrument, status: :created
     else
       render json: @instrument.errors, status: :unprocessable_entity
     end
