@@ -1,13 +1,18 @@
 # frozen_string_literal: true
 
 class InstrumentsController < OpenReadController
-  before_action :set_instrument, only: %i[update destroy]
+  before_action :set_instrument, only: %i[show update destroy]
 
   # GET /instruments
   def index
-    @instruments = current_user.instrument.all
+    @instruments = Instrument.all
 
     render json: @instruments
+  end
+
+  # GET /user instruments
+  def my_index
+    @instruments = current_user.instruments.all
   end
 
   # GET /instruments/1
