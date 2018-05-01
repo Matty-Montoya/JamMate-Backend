@@ -54,6 +54,6 @@ class InstrumentsController < OpenReadController
 
   # Only allow a trusted parameter "white list" through.
   def instrument_params
-    params.require(:instrument).permit(:instrument, :genres)
+    params.require(:instrument).permit(:instrument, :genre)
   end
 end
