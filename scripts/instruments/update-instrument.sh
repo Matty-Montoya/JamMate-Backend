@@ -6,6 +6,6 @@ curl --include --request PATCH "http://localhost:4741/instruments/${ID}" \
   --data '{
     "recipe": {
       "name": "'"${NAME}"'",
-      "description": "'"${DESCRIPTION}"'",
+      "description": "'"${DESCRIPTION}"'"
     }
   }'
